@@ -1,5 +1,5 @@
 # Qiita質問用サンプルプログラムです。
-URL:
+URL:https://qiita.com/arumiti/questions/fa6e4835f0b80dbf10d9
 
 menuディレクトリ配下のテキストファイルを書き換えたいです。
 
