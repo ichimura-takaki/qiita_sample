@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="food">
+        <option value="kare-.txt">カレー</option>
+        <option value="ra-men.txt">ラーメン</option>
+        <option value="udon.txt">うどん</option>
+    </select>
+    <input type="button" value="選択" id="btnFood" onclick="btnClick('food')">
+    <textarea name="" id="food_result"></textarea>
+
+    <select name="" id="drink">
+        <option value="tea.txt">お茶</option>
+        <option value="coffee.txt">コーヒー</option>
+        <option value="juice.txt">ジュース</option>
+    </select>
+    <input type="button" value="選択" id="btnDrink" onclick="btnClick('drink')">
+    <textarea name="" id="drink_result"></textarea>
+
+    <script>
+        async function btnClick(category){
+            let menu = document.getElementById(category).value;
+            let dir = "menu" + "/"+category + "/" + menu;
+
+            try{
+                let response = await fetch(dir);
+
+                if(!response.ok){
+                    throw new Error("テキスト取得失敗" + response.statusText);
+                }
+                
+                let text = await response.text();
+
+                document.getElementById(category + "_result").value = text;
+                
+            }catch(e){
+                alert("メニュー取得失敗" + e);
+            }
+        }
+    </script>
+</body>
+</html>
